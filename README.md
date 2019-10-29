@@ -9,7 +9,11 @@ You only need to fetch the dependencies and launch it as a simple elixir applica
 $ mix deps.get
 $ iex -S mix
 ```
+And there it is! your server is running and serving the `/tmp/` dir.
+
 ## Configure server
+
+You may change the default ip, port, or root_dir in the file config/config.ex.
 
 ## GET requests
 
@@ -17,7 +21,7 @@ $ iex -S mix
 
 GET `<directory>` : requests of directories will return the `ls -AF` of the requested dir.
 
-example: 
+example:
 ```
 $ curl localhost:8080/
 ```
@@ -43,7 +47,8 @@ $ wget localhost:8080/a.txt
 
 PUT `<file>` : use PUT requests to upload files to the server
 
-example: Upload the file `a.txt` and write it under the dir `<root-dir>/b/c/d/e/`. All necessaries subdirectories will be created. Files with same path will be overwritten.
+example: Upload the file `a.txt` and write it under the dir `<root-dir>/b/c/d/e/`. 
+         Create all necessary subdirectories. Overwrite files with same path.
 ```
 $ curl --upload-file a.txt localhost:8080/b/c/d/e/
 ```
