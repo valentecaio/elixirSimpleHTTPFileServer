@@ -5,6 +5,7 @@ defmodule FileServer.App do
   def start(_type, _args) do
     [{main_ip, main_port} | _] = addresses = Application.get_env(:file_server, :http)
     Logger.info("Started File Server at http://#{main_ip}:#{main_port}")
+    Logger.info("Serving dir #{Application.get_env(:file_server, :root_dir)}")
     children = for {ip, port} <- addresses do
       Plug.Cowboy.child_spec(
         scheme: :http,
