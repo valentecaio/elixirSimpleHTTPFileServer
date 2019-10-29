@@ -1,21 +1,50 @@
 # FileServer
 
-A simple elixir http file server that handles GET and PUT methods.
+A simple HTTP File Server made in Elixir using cowboy Erlang/OTP HTTP server that handles GET and PUT methods.
 
-GET requests of directories will return the `ls -AF` of the requested dir.
+## Launch server
 
-example: `curl localhost:8080/`
--> It will return the `ls -AF` of the root directory of the application, `<root-dir>`, that may be set in `config.ex`.
+You only need to fetch the dependencies and launch it as a simple elixir application.
+```
+$ mix deps.get
+$ iex -S mix
+```
+## Configure server
 
-GET requests of files will return the content of the file.
+## GET requests
+
+### GET `<directory>`
+
+GET `<directory>` : requests of directories will return the `ls -AF` of the requested dir.
+
+example: 
+```
+$ curl localhost:8080/
+```
+Return the `ls -AF` of the root directory of the application, `<root-dir>`, that may be set in `config.ex`.
+
+### GET `<file>`
+
+GET `<file>` : requests of files will return the content of the file.
 
 examples: 
-(1) `curl localhost:8080/a.txt`
--> It will return the content of the file `<root-dir>/a.txt` as a text/html.
 
-(2) `wget localhost:8080/a.txt`
--> It will download the content of the file `<root-dir>/a.txt`.
+(1) Check the content of the file `<root-dir>/a.txt` as a text/html.
+```
+$ curl localhost:8080/a.txt
+```
 
-PUT example: `curl -T a.txt localhost:8080/b/c/d/e/`
--> It will upload the file `a.txt` and write it under the dir `<root-dir>/b/c/d/e/`. All necessaries subdirectories will be created. Files with same path will be overwritten.
+(2) Download the content of the file `<root-dir>/a.txt`.
+```
+$ wget localhost:8080/a.txt
+```
+
+## PUT requests
+
+PUT `<file>` : use PUT requests to upload files to the server
+
+example: Upload the file `a.txt` and write it under the dir `<root-dir>/b/c/d/e/`. All necessaries subdirectories will be created. Files with same path will be overwritten.
+```
+$ curl --upload-file a.txt localhost:8080/b/c/d/e/
+```
 
