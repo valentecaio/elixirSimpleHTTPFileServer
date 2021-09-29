@@ -21,8 +21,9 @@ defmodule FileServer.MixProject do
 
   defp deps do
     [
-      {:cowboy, "~> 2.6"},
-      {:plug_cowboy, "~> 2.0"},
+      {:mime, "~> 1.6.0"},
+      {:cowboy, "~> 2.6.0"},
+      {:plug_cowboy, "~> 2.0.0"},
     ]
   end
 end
