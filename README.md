@@ -1,6 +1,6 @@
 # FileServer
 
-A simple HTTP File Server made in Elixir using cowboy Erlang/OTP HTTP server that handles GET and PUT methods.
+A simple HTTP File Server made in Elixir using cowboy Erlang/OTP HTTP server that handles GET and PUT methods.  
 Based on the Python Simple HTTP Server.
 
 ## Launch server
